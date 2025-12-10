@@ -11,6 +11,7 @@ export default function Home() {
   const [encrypted, setEncrypted] = useState<{ ciphertext: string; iv: string } | null>(null);
   const [decrypted, setDecrypted] = useState<any>(null);
   const [logs, setLogs] = useState<string[]>([]);
+  const [username, setUsername] = useState('');
 
   const addLog = (msg: string) => setLogs(prev => [...prev, msg]);
 
@@ -81,17 +82,39 @@ export default function Home() {
             {/* Step 2 */}
             <div className="flex gap-4">
               <div className="flex-none flex items-center justify-center w-8 h-8 rounded-full bg-black text-white font-bold">2</div>
-              <div>
+              <div className="w-full">
                 <h3 className="font-bold text-lg">Deploy to Vercel</h3>
-                <p className="text-sm text-gray-600 mb-3">Connect your new repository to Vercel.</p>
-                <a
-                  href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftigerlaibao%2Fprivate-folio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block hover:opacity-80 transition"
-                >
-                  <img src="https://vercel.com/button" alt="Deploy with Vercel" />
-                </a>
+                <p className="text-sm text-gray-600 mb-3">Connect your forked repository to Vercel.</p>
+
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <label htmlFor="gh-username" className="text-sm font-semibold">Your GitHub Username:</label>
+                    <input
+                      id="gh-username"
+                      type="text"
+                      placeholder="e.g. tigerlaibao"
+                      value={username}
+                      onChange={e => setUsername(e.target.value)}
+                      className="border rounded px-2 py-1 text-sm"
+                    />
+                  </div>
+
+                  <a
+                    href={username ? `https://vercel.com/import/git?s=https://github.com/${username}/private-folio` : 'https://vercel.com/new'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-block transition ${!username ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-80'}`}
+                    onClick={e => {
+                      if (!username) {
+                        e.preventDefault();
+                        alert('Please enter your GitHub username first.');
+                      }
+                    }}
+                  >
+                    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+                  </a>
+                  {!username && <p className="text-xs text-orange-500">Please enter your username to generate the deploy link.</p>}
+                </div>
               </div>
             </div>
           </div>
