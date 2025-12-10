@@ -51,8 +51,17 @@ export default function Home() {
   };
 
   return (
-    <main className="p-8 font-mono">
-      <h1 className="text-2xl font-bold mb-4">Crypto Playground</h1>
+    <main className="p-8 font-mono max-w-2xl mx-auto">
+      <div className="flex justify-between items-center mb-8 border-b pb-4">
+        <h1 className="text-2xl font-bold">PrivateFolio</h1>
+        <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/tigerlaibao/private-folio" target="_blank" rel="noopener noreferrer">
+          <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare Workers" />
+        </a>
+      </div>
+
+      <div className="mb-4 text-sm text-gray-600">
+        <p>This is a playground to verify the Client-Side Encryption logic.</p>
+      </div>
 
       <div className="mb-8 border p-4 rounded">
         <h2 className="font-bold mb-2">1. Setup</h2>
