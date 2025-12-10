@@ -19,6 +19,12 @@ Deploy your own instance of PrivateFolio to your Cloudflare account for free.
    - Create a D1 Database (`portfolio-db`).
    - Build and deploy the Next.js frontend.
 
+## 🔄 How to Update
+Since this is a self-hosted (BYOC) application, you are in full control of the code. To get the latest features or bug fixes:
+1. Go to your forked repository on GitHub.
+2. Click **"Sync fork"** (under the green Code button).
+3. Cloudflare Pages will detect the change and automatically redeploy the new version.
+
 ## Features
 - **Zero Knowledge**: Data is encrypted in your browser before being sent.
 - **Serverless**: Runs entirely on Cloudflare Pages & D1.
