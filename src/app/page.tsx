@@ -11,7 +11,6 @@ export default function Home() {
   const [encrypted, setEncrypted] = useState<{ ciphertext: string; iv: string } | null>(null);
   const [decrypted, setDecrypted] = useState<any>(null);
   const [logs, setLogs] = useState<string[]>([]);
-  const [username, setUsername] = useState('');
 
   const addLog = (msg: string) => setLogs(prev => [...prev, msg]);
 
@@ -53,77 +52,20 @@ export default function Home() {
 
   return (
     <main className="p-8 font-mono max-w-3xl mx-auto">
-      <div className="mb-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">PrivateFolio</h1>
-        <p className="text-gray-600 mb-8">Your Self-Hosted, End-to-End Encrypted Personal Finance Tracker.</p>
-
-        <div className="bg-gray-50 border rounded-xl p-8 text-left max-w-xl mx-auto shadow-sm">
-          <h2 className="text-xl font-bold mb-6 border-b pb-2">🚀 detailed Installation Guide</h2>
-
-          <div className="space-y-8">
-            {/* Step 1 */}
-            <div className="flex gap-4">
-              <div className="flex-none flex items-center justify-center w-8 h-8 rounded-full bg-black text-white font-bold">1</div>
-              <div>
-                <h3 className="font-bold text-lg">Fork Repository</h3>
-                <p className="text-sm text-gray-600 mb-3">Copy the source code to your own GitHub account.</p>
-                <a
-                  href="https://github.com/tigerlaibao/private-folio/fork"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 border border-black text-black rounded hover:bg-gray-100 transition text-sm font-bold"
-                >
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                  Fork Now
-                </a>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="flex gap-4">
-              <div className="flex-none flex items-center justify-center w-8 h-8 rounded-full bg-black text-white font-bold">2</div>
-              <div className="w-full">
-                <h3 className="font-bold text-lg">Deploy to Cloudflare</h3>
-                <p className="text-sm text-gray-600 mb-3">Deploy your forked repository to Cloudflare Pages.</p>
-
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2">
-                    <label htmlFor="gh-username" className="text-sm font-semibold">Your GitHub Username:</label>
-                    <input
-                      id="gh-username"
-                      type="text"
-                      placeholder="e.g. tigerlaibao"
-                      value={username}
-                      onChange={e => setUsername(e.target.value)}
-                      className="border rounded px-2 py-1 text-sm"
-                    />
-                  </div>
-
-                  <a
-                    href={username ? `https://deploy.workers.cloudflare.com/?url=https://github.com/${username}/private-folio` : 'https://deploy.workers.cloudflare.com/?url=https://github.com/tigerlaibao/private-folio'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-block transition ${!username ? 'opacity-50 cursor-not-allowed' : 'hover:opacity-80'}`}
-                    onClick={e => {
-                      if (!username) {
-                        e.preventDefault();
-                        alert('Please enter your GitHub username first.');
-                      }
-                    }}
-                  >
-                    <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare Pages" />
-                  </a>
-                  {!username && <p className="text-xs text-orange-500">Please enter your username to generate the deploy link.</p>}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="mb-8 border-b pb-4">
+        <h1 className="text-2xl font-bold">PrivateFolio Dashboard</h1>
+        <p className="text-gray-600">Welcome to your secure personal asset manager.</p>
       </div>
 
-      <div className="mb-8 border-t pt-8">
-        <h2 className="text-2xl font-bold mb-4">🔐 Crypto Playground (Demo)</h2>
-        <p className="text-sm text-gray-600 mb-6">Below is a demonstration of the client-side encryption logic. In the real app, this happens automatically when you add assets.</p>
+      <div className="bg-white border rounded-lg p-6 shadow-sm mb-8">
+        <h2 className="text-xl font-bold mb-4">Your Assets (Demo)</h2>
+        <p className="text-sm text-gray-500 mb-4">This version contains the core encryption logic. Connect persistence to start saving data.</p>
+        {/* Crypto Playground Logic remains here for verify purposes until we build the real UI */}
+      </div>
+
+      <div className="mb-4 text-sm text-gray-600">
+        <h3 className="font-bold mb-2">Encryption Test Lab</h3>
+        <p>Verify that your client-side encryption is working.</p>
       </div>
 
       <div className="mb-8 border p-4 rounded">
